@@ -249,7 +249,7 @@ const useProductSelection = ({
   const _addToCart = useCartStore((store) => store.addToCart);
 
   const addToCart = useCallback(
-    async (config: AddToCartConfig = {showCartAfter: true}) => {
+    async (config: AddToCartConfig = {showCartAfter: false}) => {
       const isVariant = state.selectedProductOptions.size > 0;
       if (isVariant && activeVariation?.name) {
         config.data = {
