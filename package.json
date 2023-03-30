@@ -18,16 +18,12 @@
     "lint": "tsc --noEmit && eslint . && npm run lint:prettier",
     "lintfix:prettier": "prettier --ignore-path .gitignore --write --plugin-search-dir=. --list-different .",
     "lintfix": "tsc --noEmit && npm run lintfix:prettier && eslint --fix .",
-    "setup": "npm run sync && npm run graphql:generate",
+    "setup": "npm run graphql:generate",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "graphql:generate": "graphql-codegen --config codegen.yml -r dotenv/config",
     "theme:generate": "node -r dotenv/config ./build-utils/generate-theme.mjs",
     "chromatic": "npx chromatic",
-    "sync:defaults": "swell storefront settings push settings -f ./config/defaults.json --strategy \"defaults\" --store $SWELL_STORE_ID --secret-key $SWELL_SECRET_KEY",
-    "sync:content-blocks": "ls ./config/content/*.json | xargs -L 1 swell model push --store $SWELL_STORE_ID --secret-key $SWELL_SECRET_KEY --strategy \"merge\" --content -f",
-    "sync:editor": "swell storefront settings push editor -f config/editor.json --strategy \"merge\" --store $SWELL_STORE_ID --secret-key $SWELL_SECRET_KEY",
-    "sync": "set -a && if [ -f .env ]; then source .env; fi && npm run sync:defaults && npm run sync:content-blocks && npm run sync:editor"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.4",
